@@ -27,6 +27,7 @@ import AltHome from "./Components/AltHome";
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Owned from "./Components/Owned";
+import { Col } from "react-bootstrap";
 
 export default function App() {
   const [images, setImages] = React.useState([]);
