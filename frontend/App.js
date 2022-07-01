@@ -36,6 +36,7 @@ export default function App() {
     const getOwner = async () => {
       let isOwner = await window.contract.get_contract_owner();
       changeIsOwner(isOwner === window.accountId);
+      console.log("activate");
     };
     getOwner();
   }, []);
