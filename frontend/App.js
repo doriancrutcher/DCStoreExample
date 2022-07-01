@@ -24,7 +24,7 @@ import AltHome from "./Components/AltHome";
 
 //react router
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { useEffect } from "react";
 import Owned from "./Components/Owned";
 
@@ -54,7 +54,7 @@ export default function App() {
     getInfo();
   }, []);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         <Container>
           <Navbar.Brand href='/'>NEAR Clothes Store</Navbar.Brand>
@@ -87,6 +87,6 @@ export default function App() {
           <Route path='/Owned' exact element={<Owned />} />
         </Routes>
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
