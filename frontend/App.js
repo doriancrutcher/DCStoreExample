@@ -61,11 +61,17 @@ export default function App() {
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
-              {isOwner ? (
-                <Nav.Link href='/newproduct'>Add Item</Nav.Link>
-              ) : null}
-              <Nav.Link href='/'>Shop</Nav.Link>
-              <Nav.Link href='/owned'>Owned</Nav.Link>
+              <Container>
+                <Col>
+                  {isOwner ? <Link to='/newproduct'> Add Item</Link> : null}
+                </Col>{" "}
+                <Col>
+                  <Link to='/'>Shop</Link>
+                </Col>
+                <Col>
+                  <Link to='/owned'>Owned</Link>
+                </Col>
+              </Container>
             </Nav>
             <Nav>
               <Nav.Link
@@ -82,9 +88,9 @@ export default function App() {
 
       <Container>
         <Routes>
-          <Route path='/' exact element={altHome ? <AltHome /> : <Home />} />
           <Route path='/newproduct' exact element={<UpoadImage />} />
           <Route path='/Owned' exact element={<Owned />} />
+          <Route path='/' exact element={altHome ? <AltHome /> : <Home />} />
         </Routes>
       </Container>
     </HashRouter>
