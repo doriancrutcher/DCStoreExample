@@ -13,6 +13,7 @@ const Home = (props) => {
   const [productsNames, changeProductsNames] = useState([]);
   const [imageSelect, changeImageSelect] = useState([]);
   const [prices, changePrices] = useState([]);
+  const [itemBought, changeItemBought] = useState(false);
 
   useEffect(() => {
     const getProductInfo = async () => {
@@ -84,7 +85,12 @@ const Home = (props) => {
     //   ],
     // });
 
-    if (await contract.check_token({ id: `${window.accountId}-go-dc-nft` })) {
+    if (
+      await contract.check_token({
+        id: `${window.accountId}-entrepreneur-dc-nft`,
+      })
+    ) {
+      console.log("you have a token already");
       await window.contract.remove_item(
         {
           name: name,
@@ -96,6 +102,8 @@ const Home = (props) => {
         window.utils.format.parseNearAmount(prices[index])
       );
     } else {
+      console.log("you got a token!");
+
       await window.contract.remove_item(
         {
           name: name,
@@ -109,12 +117,12 @@ const Home = (props) => {
 
       await window.contract.nft_mint(
         {
-          token_id: `${window.accountId}-go-dc-nft`,
+          token_id: `${window.accountId}-entrepreneur-dc-nft`,
           metadata: {
-            title: "My Non Fungible Team Token",
-            description: "The Team Most Certainly Goes :)",
+            title: "Entrepreneurship in Blockchain Certificate",
+            description: "Future Leaders Begin with a Strong Foundation",
             media:
-              "https://static.wikia.nocookie.net/adventuretimewithfinnandjake/images/3/3b/Jakesalad.png/revision/latest?cb=20190807133015",
+              "https://firebasestorage.googleapis.com/v0/b/near-market-22f9f.appspot.com/o/images%2Fphoto_2022-07-02%2009.48.20.jpeg?alt=media&token=ddee5c57-5aad-4300-8f64-54d34f077a4e",
           },
           receiver_id: window.accountId,
         },
